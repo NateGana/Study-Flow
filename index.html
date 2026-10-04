@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyFlow – Task & Deadline Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">📘 StudyFlow</div>
+  <nav>
+    <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+    <button class="nav-btn" data-view="tasks">Tasks</button>
+  </nav>
+</aside>
+
+<main>
+  <section id="dashboard" class="view active">
+    <h1>Dashboard</h1>
+    <div class="cards" id="stats"></div>
+    <div class="panel">
+      <h2>Completion Progress</h2>
+      <p class="muted" id="progText"></p>
+      <div class="bar"><div id="progBar"></div></div>
+    </div>
+    <div class="panel">
+      <h2>Due Soon</h2>
+      <ul class="list" id="dueList"></ul>
+    </div>
+  </section>
+
+  <section id="tasks" class="view">
+    <div class="head"><h1>Tasks</h1><button class="btn" id="addTaskBtn">+ Add Task</button></div>
+    <div class="filters">
+      <input type="search" id="searchTask" placeholder="Search tasks…" aria-label="Search tasks">
+      <select id="filterSubject" aria-label="Filter by subject"></select>
+      <select id="filterStatus" aria-label="Filter by status">
+        <option value="">All statuses</option><option>Pending</option><option>Completed</option>
+      </select>
+    </div>
+    <div id="taskList" class="task-list"></div>
+  </section>
+</main>
+
+<div class="modal" id="modal" hidden>
+  <form class="modal-box" id="form">
+    <h2 id="formTitle">Add Task</h2>
+    <label>Task name <input id="f_name" required maxlength="70"></label>
+    <label>Subject <input id="f_subject" required maxlength="40" list="subjList"></label>
+    <datalist id="subjList"></datalist>
+    <div class="row">
+      <label>Due date <input id="f_due" type="date" required></label>
+      <label>Priority <select id="f_priority"><option>Low</option><option selected>Medium</option><option>High</option></select></label>
+    </div>
+    <label>Notes <textarea id="f_notes" rows="2" maxlength="150"></textarea></label>
+    <div class="actions">
+      <button type="button" class="btn ghost" data-close>Cancel</button>
+      <button class="btn">Save task</button>
+    </div>
+  </form>
+</div>
+
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
